@@ -1,0 +1,124 @@
+Disease,Drug,Egyptian Brand,Role,Dosage,Key Side Effects,Avoid In,Allergy Warning,Drug Interaction Warning
+(Vertigo) Paroxysmal Positional Vertigo,Betahistine,Betaserc,First-line,16mg 3 times daily,"Headache, nausea",Consult physician for chronic disease interactions,Betahistine allergy,Check interactions with current medications
+(Vertigo) Paroxysmal Positional Vertigo,Cinnarizine,Stugeron,Alternative,25mg 3 times daily,Drowsiness,Consult physician for chronic disease interactions,Cinnarizine allergy,Check interactions with current medications
+(Vertigo) Paroxysmal Positional Vertigo,Dimenhydrinate,Dramamine,Symptomatic,50mg as needed,Dry mouth,Consult physician for chronic disease interactions,Dimenhydrinate allergy,Check interactions with current medications
+AIDS,Tenofovir,Viraday,ART,300mg daily,Kidney toxicity,Consult physician for chronic disease interactions,Tenofovir allergy,Check interactions with current medications
+AIDS,Lamivudine,Lamivir,ART,150mg twice daily,Fatigue,Consult physician for chronic disease interactions,Lamivudine allergy,Check interactions with current medications
+AIDS,Efavirenz,Stocrin,ART,600mg nightly,Dizziness,Consult physician for chronic disease interactions,Efavirenz allergy,Check interactions with current medications
+Acne,Adapalene,Differin,Topical,Once nightly,Skin irritation,Consult physician for chronic disease interactions,Adapalene allergy,Check interactions with current medications
+Acne,Doxycycline,Vibramycin,Oral antibiotic,100mg daily,Photosensitivity,Consult physician for chronic disease interactions,Doxycycline allergy,Check interactions with current medications
+Acne,Benzoyl Peroxide,Benzac,Topical,Once daily,Dry skin,Consult physician for chronic disease interactions,Benzoyl Peroxide allergy,Check interactions with current medications
+Alcoholic hepatitis,Silymarin,Legalex,Supportive,140mg 3 times daily,GI upset,Consult physician for chronic disease interactions,Silymarin allergy,Check interactions with current medications
+Alcoholic hepatitis,Lactulose,Duphalac,Supportive,15-30ml daily,Bloating,Consult physician for chronic disease interactions,Lactulose allergy,Check interactions with current medications
+Alcoholic hepatitis,Prednisolone,Predsol,Severe cases,40mg daily,Weight gain,Consult physician for chronic disease interactions,Prednisolone allergy,Check interactions with current medications
+Allergy,Cetirizine,Zyrtec,First-line,10mg daily,Drowsiness,Consult physician for chronic disease interactions,Cetirizine allergy,Check interactions with current medications
+Allergy,Loratadine,Claritine,Alternative,10mg daily,Headache,Consult physician for chronic disease interactions,Loratadine allergy,Check interactions with current medications
+Allergy,Fexofenadine,Telfast,Alternative,120mg daily,Nausea,Consult physician for chronic disease interactions,Fexofenadine allergy,Check interactions with current medications
+Arthritis,Diclofenac,Cataflam,Pain relief,50mg twice daily,GI irritation,"Kidney disease, ulcers",NSAID allergy,Steroids increase ulcer risk
+Arthritis,Celecoxib,Celebrex,Anti-inflammatory,200mg daily,Edema,Consult physician for chronic disease interactions,Celecoxib allergy,Check interactions with current medications
+Arthritis,Paracetamol,Panadol,Mild pain,500mg as needed,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Bronchial Asthma,Salbutamol,Ventolin,Rescue inhaler,100-200mcg as needed,Tremor,Severe arrhythmia,Salbutamol allergy,Other stimulants increase palpitations
+Bronchial Asthma,Budesonide,Pulmicort,Controller,200-400mcg twice daily,Oral thrush,Consult physician for chronic disease interactions,Budesonide allergy,Check interactions with current medications
+Bronchial Asthma,Montelukast,Singulair,Add-on,10mg nightly,Headache,Consult physician for chronic disease interactions,Montelukast allergy,Check interactions with current medications
+Cervical spondylosis,Thiocolchicoside,Muscoril,Muscle relaxant,4mg twice daily,Drowsiness,Consult physician for chronic disease interactions,Thiocolchicoside allergy,Check interactions with current medications
+Cervical spondylosis,Diclofenac,Voltaren,Pain relief,50mg twice daily,GI irritation,"Kidney disease, ulcers",NSAID allergy,Steroids increase ulcer risk
+Cervical spondylosis,Meloxicam,Mobic,Anti-inflammatory,15mg daily,Nausea,Consult physician for chronic disease interactions,Meloxicam allergy,Check interactions with current medications
+Chicken pox,Acyclovir,Zovirax,Antiviral,800mg 5 times daily,Nausea,Consult physician for chronic disease interactions,Acyclovir allergy,Check interactions with current medications
+Chicken pox,Paracetamol,Panadol,Fever relief,500mg every 6h,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Chicken pox,Calamine Lotion,Calamine,Skin relief,Topical,Skin dryness,Consult physician for chronic disease interactions,Calamine Lotion allergy,Check interactions with current medications
+Chronic cholestasis,Ursodeoxycholic Acid,Ursofalk,First-line,250mg 3 times daily,Diarrhea,Consult physician for chronic disease interactions,Ursodeoxycholic Acid allergy,Check interactions with current medications
+Chronic cholestasis,Cholestyramine,Questran,Itching relief,4g daily,Constipation,Consult physician for chronic disease interactions,Cholestyramine allergy,Check interactions with current medications
+Chronic cholestasis,Silymarin,Legalex,Supportive,140mg 3 times daily,GI upset,Consult physician for chronic disease interactions,Silymarin allergy,Check interactions with current medications
+Common Cold,Paracetamol,Panadol Cold & Flu,First-line,500-1000mg every 4-6h,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Common Cold,Cetirizine,Zyrtec,Symptomatic,10mg daily,Drowsiness,Consult physician for chronic disease interactions,Cetirizine allergy,Check interactions with current medications
+Common Cold,Dextromethorphan,Bronchicum,Cough relief,10-20mg every 4h,Dizziness,Consult physician for chronic disease interactions,Dextromethorphan allergy,Check interactions with current medications
+Dengue,Paracetamol,Panadol,Supportive,500-1000mg every 4-6h,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Dengue,ORS,Rehydran,Hydration,As needed,,Consult physician for chronic disease interactions,ORS allergy,Check interactions with current medications
+Dengue,IV Fluids,Hospital use,Severe cases,Clinical supervision,Fluid overload,Consult physician for chronic disease interactions,IV Fluids allergy,Check interactions with current medications
+Diabetes,Metformin XR,Glucophage XR 1000,First-line,500-1000mg twice daily,"Nausea, diarrhea","Kidney disease, severe liver disease",Metformin allergy,Alcohol increases lactic acidosis risk
+Diabetes,Gliclazide,Diamicron MR,Second-line,30-60mg daily,Hypoglycemia,Hypoglycemia risk,Sulfonylurea allergy,Other diabetes drugs may increase hypoglycemia
+Diabetes,Insulin Glargine,Lantus,Rescue,Weight based,Hypoglycemia,Hypoglycemia,Insulin allergy,Beta blockers may mask hypoglycemia
+Dimorphic hemorrhoids (piles),Daflon,Daflon 500,First-line,500mg twice daily,GI upset,Consult physician for chronic disease interactions,Daflon allergy,Check interactions with current medications
+Dimorphic hemorrhoids (piles),Lidocaine Cream,Procto-Glyvenol,Pain relief,Topical,Skin irritation,Consult physician for chronic disease interactions,Lidocaine Cream allergy,Check interactions with current medications
+Dimorphic hemorrhoids (piles),Lactulose,Duphalac,Supportive,15ml daily,Bloating,Consult physician for chronic disease interactions,Lactulose allergy,Check interactions with current medications
+Drug Reaction,Cetirizine,Zyrtec,First-line,10mg daily,Drowsiness,Consult physician for chronic disease interactions,Cetirizine allergy,Check interactions with current medications
+Drug Reaction,Hydrocortisone,Cortiplex,Steroid,Topical,Skin thinning,Consult physician for chronic disease interactions,Hydrocortisone allergy,Check interactions with current medications
+Drug Reaction,Epinephrine,EpiPen,Emergency,0.3mg IM,Palpitations,Consult physician for chronic disease interactions,Epinephrine allergy,Check interactions with current medications
+Fungal infection,Fluconazole,Diflucan,Oral antifungal,150mg weekly,Liver toxicity,Consult physician for chronic disease interactions,Fluconazole allergy,Check interactions with current medications
+Fungal infection,Clotrimazole,Canesten,Topical,Twice daily,Burning sensation,Consult physician for chronic disease interactions,Clotrimazole allergy,Check interactions with current medications
+Fungal infection,Ketoconazole,Nizoral,Topical,Once daily,Skin irritation,Consult physician for chronic disease interactions,Ketoconazole allergy,Check interactions with current medications
+GERD,Omeprazole,Losec,First-line,20mg daily,Headache,Consult physician for chronic disease interactions,Omeprazole allergy,Check interactions with current medications
+GERD,Esomeprazole,Nexium,Alternative,40mg daily,Nausea,Consult physician for chronic disease interactions,Esomeprazole allergy,Check interactions with current medications
+GERD,Gaviscon,Gaviscon,Symptomatic,After meals,Constipation,Consult physician for chronic disease interactions,Gaviscon allergy,Check interactions with current medications
+Gastroenteritis,ORS,Rehydran,First-line,As needed,,Consult physician for chronic disease interactions,ORS allergy,Check interactions with current medications
+Gastroenteritis,Loperamide,Imodium,Symptomatic,4mg initial then 2mg,Constipation,Consult physician for chronic disease interactions,Loperamide allergy,Check interactions with current medications
+Gastroenteritis,Metronidazole,Flagyl,Antibiotic,500mg 3 times daily,Metallic taste,Severe liver disease,Metronidazole allergy,Alcohol causes severe reaction
+Heart attack,Aspirin,Aspocid,Emergency,300mg once,Bleeding,"Bleeding disorders, dengue, ulcers",Aspirin allergy,Blood thinners increase bleeding
+Heart attack,Atorvastatin,Lipitor,Secondary prevention,40mg daily,Muscle pain,Consult physician for chronic disease interactions,Atorvastatin allergy,Check interactions with current medications
+Heart attack,Ticagrelor,Brilinta,Antiplatelet,90mg twice daily,Bleeding,Consult physician for chronic disease interactions,Ticagrelor allergy,Check interactions with current medications
+Hepatitis B,Tenofovir,Viread,Antiviral,300mg daily,Kidney toxicity,Consult physician for chronic disease interactions,Tenofovir allergy,Check interactions with current medications
+Hepatitis B,Entecavir,Baraclude,Antiviral,0.5mg daily,Headache,Consult physician for chronic disease interactions,Entecavir allergy,Check interactions with current medications
+Hepatitis B,Interferon,Pegasys,Advanced,Weekly injection,Flu-like symptoms,Consult physician for chronic disease interactions,Interferon allergy,Check interactions with current medications
+Hepatitis C,Sofosbuvir,Sovaldi,First-line,400mg daily,Fatigue,Consult physician for chronic disease interactions,Sofosbuvir allergy,Check interactions with current medications
+Hepatitis C,Daclatasvir,Daklinza,Combination,60mg daily,Headache,Consult physician for chronic disease interactions,Daclatasvir allergy,Check interactions with current medications
+Hepatitis C,Ribavirin,Rebetol,Combination,Weight based,Anemia,Consult physician for chronic disease interactions,Ribavirin allergy,Check interactions with current medications
+Hepatitis D,Peginterferon,Pegasys,First-line,Weekly injection,Flu-like symptoms,Consult physician for chronic disease interactions,Peginterferon allergy,Check interactions with current medications
+Hepatitis D,Tenofovir,Viread,Combination,300mg daily,Kidney toxicity,Consult physician for chronic disease interactions,Tenofovir allergy,Check interactions with current medications
+Hepatitis D,Entecavir,Baraclude,Combination,0.5mg daily,Headache,Consult physician for chronic disease interactions,Entecavir allergy,Check interactions with current medications
+Hepatitis E,ORS,Rehydran,Supportive,As needed,,Consult physician for chronic disease interactions,ORS allergy,Check interactions with current medications
+Hepatitis E,Paracetamol,Panadol,Fever relief,500mg every 6h,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Hepatitis E,Silymarin,Legalex,Supportive,140mg 3 times daily,GI upset,Consult physician for chronic disease interactions,Silymarin allergy,Check interactions with current medications
+Hypertension,Telmisartan,Tareg 80,First-line,40-80mg daily,Dizziness,"Pregnancy, kidney disease",ARB allergy,Potassium supplements may increase potassium
+Hypertension,Amlodipine,Norvasc,First-line,5mg daily,Leg swelling,Severe hypotension,Amlodipine allergy,Other BP meds may increase hypotension
+Hypertension,Bisoprolol,Concor,Alternative,5mg daily,Fatigue,"Asthma, bradycardia",Beta blocker allergy,Verapamil may slow heart excessively
+Hyperthyroidism,Carbimazole,Neo-Mercazole,First-line,5-15mg daily,Rash,Consult physician for chronic disease interactions,Carbimazole allergy,Check interactions with current medications
+Hyperthyroidism,Propranolol,Inderal,Symptom control,40mg twice daily,Bradycardia,Consult physician for chronic disease interactions,Propranolol allergy,Check interactions with current medications
+Hyperthyroidism,Methimazole,Thyrozol,Alternative,10mg daily,Liver toxicity,Consult physician for chronic disease interactions,Methimazole allergy,Check interactions with current medications
+Hypoglycemia,Glucose Sachets,Glucose-D,Immediate,As needed,Hyperglycemia,Consult physician for chronic disease interactions,Glucose Sachets allergy,Check interactions with current medications
+Hypoglycemia,Glucagon,GlucaGen,Emergency,1mg IM,Nausea,Consult physician for chronic disease interactions,Glucagon allergy,Check interactions with current medications
+Hypoglycemia,IV Dextrose,Hospital use,Emergency,Clinical use,Fluid overload,Consult physician for chronic disease interactions,IV Dextrose allergy,Check interactions with current medications
+Hypothyroidism,Levothyroxine,Eltroxin,First-line,50-100mcg daily,Palpitations,Consult physician for chronic disease interactions,Levothyroxine allergy,Check interactions with current medications
+Hypothyroidism,Liothyronine,Cytomel,Alternative,25mcg daily,Anxiety,Consult physician for chronic disease interactions,Liothyronine allergy,Check interactions with current medications
+Hypothyroidism,Selenium,Various,Supportive,200mcg daily,GI upset,Consult physician for chronic disease interactions,Selenium allergy,Check interactions with current medications
+Impetigo,Fusidic Acid,Fucidin,Topical,3 times daily,Skin irritation,Consult physician for chronic disease interactions,Fusidic Acid allergy,Check interactions with current medications
+Impetigo,Mupirocin,Bactroban,Topical,3 times daily,Burning sensation,Consult physician for chronic disease interactions,Mupirocin allergy,Check interactions with current medications
+Impetigo,Cephalexin,Keflex,Oral antibiotic,500mg twice daily,Diarrhea,Consult physician for chronic disease interactions,Cephalexin allergy,Check interactions with current medications
+Jaundice,Ursodeoxycholic Acid,Ursofalk,Supportive,250mg 3 times daily,Diarrhea,Consult physician for chronic disease interactions,Ursodeoxycholic Acid allergy,Check interactions with current medications
+Jaundice,Silymarin,Legalex,Supportive,140mg 3 times daily,GI upset,Consult physician for chronic disease interactions,Silymarin allergy,Check interactions with current medications
+Jaundice,Lactulose,Duphalac,Supportive,15ml daily,Bloating,Consult physician for chronic disease interactions,Lactulose allergy,Check interactions with current medications
+Malaria,Artemether/Lumefantrine,Coartem,First-line,Protocol based,Nausea,Consult physician for chronic disease interactions,Artemether/Lumefantrine allergy,Check interactions with current medications
+Malaria,Chloroquine,Avloclor,Alternative,500mg initially,Retinopathy,Consult physician for chronic disease interactions,Chloroquine allergy,Check interactions with current medications
+Malaria,Quinine,Quinine Sulfate,Severe,600mg 3 times daily,Tinnitus,Consult physician for chronic disease interactions,Quinine allergy,Check interactions with current medications
+Migraine,Sumatriptan,Imigran,Acute attack,50mg as needed,Chest tightness,Consult physician for chronic disease interactions,Sumatriptan allergy,Check interactions with current medications
+Migraine,Ibuprofen,Brufen,Mild attack,400mg every 6-8h,GI irritation,"Peptic ulcer, kidney disease, dengue",NSAID allergy,Blood thinners increase bleeding risk
+Migraine,Propranolol,Inderal,Prevention,40mg twice daily,Bradycardia,Consult physician for chronic disease interactions,Propranolol allergy,Check interactions with current medications
+Osteoarthritis,Glucosamine,Jointace,Supportive,1500mg daily,GI upset,Consult physician for chronic disease interactions,Glucosamine allergy,Check interactions with current medications
+Osteoarthritis,Diclofenac,Voltaren,Pain relief,50mg twice daily,GI irritation,"Kidney disease, ulcers",NSAID allergy,Steroids increase ulcer risk
+Osteoarthritis,Celecoxib,Celebrex,Anti-inflammatory,200mg daily,Edema,Consult physician for chronic disease interactions,Celecoxib allergy,Check interactions with current medications
+Paralysis (brain hemorrhage),Mannitol,Mannitol,Hospital,Clinical use,Electrolyte imbalance,Consult physician for chronic disease interactions,Mannitol allergy,Check interactions with current medications
+Paralysis (brain hemorrhage),Amlodipine,Norvasc,BP control,5mg daily,Leg swelling,Severe hypotension,Amlodipine allergy,Other BP meds may increase hypotension
+Paralysis (brain hemorrhage),Atorvastatin,Lipitor,Prevention,40mg daily,Muscle pain,Consult physician for chronic disease interactions,Atorvastatin allergy,Check interactions with current medications
+Peptic ulcer disease,Omeprazole,Losec,First-line,20mg daily,Headache,Consult physician for chronic disease interactions,Omeprazole allergy,Check interactions with current medications
+Peptic ulcer disease,Clarithromycin,Klacid,H. pylori,500mg twice daily,Diarrhea,Consult physician for chronic disease interactions,Clarithromycin allergy,Check interactions with current medications
+Peptic ulcer disease,Amoxicillin,Amoxil,H. pylori,1g twice daily,Rash,Consult physician for chronic disease interactions,Amoxicillin allergy,Check interactions with current medications
+Pneumonia,Amoxicillin/Clavulanate,Augmentin,First-line,1g twice daily,Diarrhea,Consult physician for chronic disease interactions,Amoxicillin/Clavulanate allergy,Check interactions with current medications
+Pneumonia,Azithromycin,Zithromax,Alternative,500mg then 250mg daily,QT prolongation,Consult physician for chronic disease interactions,Azithromycin allergy,Check interactions with current medications
+Pneumonia,Levofloxacin,Tavanic,Severe,500mg daily,Tendon injury,Consult physician for chronic disease interactions,Levofloxacin allergy,Check interactions with current medications
+Psoriasis,Calcipotriol,Daivonex,Topical,Twice daily,Skin irritation,Consult physician for chronic disease interactions,Calcipotriol allergy,Check interactions with current medications
+Psoriasis,Methotrexate,Methotrexate,Severe,Weekly,Liver toxicity,Consult physician for chronic disease interactions,Methotrexate allergy,Check interactions with current medications
+Psoriasis,Clobetasol,Dermovate,Topical steroid,Once daily,Skin thinning,Consult physician for chronic disease interactions,Clobetasol allergy,Check interactions with current medications
+Tuberculosis,Rifampicin,Rifadin,TB protocol,600mg daily,Orange urine,Consult physician for chronic disease interactions,Rifampicin allergy,Check interactions with current medications
+Tuberculosis,Isoniazid,Nydrazid,TB protocol,300mg daily,Neuropathy,Consult physician for chronic disease interactions,Isoniazid allergy,Check interactions with current medications
+Tuberculosis,Pyrazinamide,Pyrazinamide,TB protocol,1500mg daily,Liver toxicity,Consult physician for chronic disease interactions,Pyrazinamide allergy,Check interactions with current medications
+Typhoid,Ciprofloxacin,Ciprocin,First-line,500mg twice daily,Tendon injury,Tendon disorders,Fluoroquinolone allergy,Antacids reduce absorption
+Typhoid,Ceftriaxone,Rocephin,Severe,1g injection daily,Injection pain,Consult physician for chronic disease interactions,Ceftriaxone allergy,Check interactions with current medications
+Typhoid,Azithromycin,Zithromax,Alternative,500mg daily,Nausea,Consult physician for chronic disease interactions,Azithromycin allergy,Check interactions with current medications
+Urinary tract infection,Nitrofurantoin,Macrofuran,First-line,100mg twice daily,Nausea,Consult physician for chronic disease interactions,Nitrofurantoin allergy,Check interactions with current medications
+Urinary tract infection,Ciprofloxacin,Ciprocin,Alternative,500mg twice daily,Tendon injury,Tendon disorders,Fluoroquinolone allergy,Antacids reduce absorption
+Urinary tract infection,Fosfomycin,Monurol,Single dose,3g once,Diarrhea,Consult physician for chronic disease interactions,Fosfomycin allergy,Check interactions with current medications
+Varicose veins,Daflon,Daflon 500,First-line,500mg twice daily,GI upset,Consult physician for chronic disease interactions,Daflon allergy,Check interactions with current medications
+Varicose veins,Diosmin/Hesperidin,Diosed C,Supportive,Once daily,Nausea,Consult physician for chronic disease interactions,Diosmin/Hesperidin allergy,Check interactions with current medications
+Varicose veins,Heparinoid Cream,Hirudoid,Topical,Twice daily,Skin irritation,Consult physician for chronic disease interactions,Heparinoid Cream allergy,Check interactions with current medications
+Hepatitis A,ORS,Rehydran,Supportive,As needed,,Consult physician for chronic disease interactions,ORS allergy,Check interactions with current medications
+Hepatitis A,Paracetamol,Panadol,Fever relief,500mg every 6h,Liver toxicity,Severe liver disease,Paracetamol allergy,Alcohol increases liver toxicity
+Hepatitis A,Silymarin,Legalex,Supportive,140mg 3 times daily,GI upset,Consult physician for chronic disease interactions,Silymarin allergy,Check interactions with current medications
