@@ -7,7 +7,7 @@ import '../models/case_model.dart';
 import '../app_theme.dart';
 import 'add_symptoms_screen.dart';
 import 'ai_diagnosis_results_screen.dart';
-import 'contact_doctor_screen.dart';
+
 import 'medical_history_screen.dart';
 import 'patient_settings_screen.dart';
 
@@ -56,7 +56,6 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
       body: IndexedStack(index: _tab, children: const [
         _HomeTab(),
         _CasesTab(),
-        _ChatTab(),
         PatientSettingsScreen(),
       ]),
       bottomNavigationBar: BottomNavigationBar(
@@ -70,8 +69,6 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
               icon: Icon(Icons.home_outlined), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.folder_outlined), label: 'My Cases'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.chat_outlined), label: 'Chat'),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],
@@ -125,11 +122,7 @@ class _HomeTab extends StatelessWidget {
             ])),
         const SizedBox(height: 24),
         // Quick actions
-        Text('Quick Access',
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(fontWeight: FontWeight.w600)),
+
         const SizedBox(height: 12),
         Row(children: [
           _QuickAction(
@@ -141,20 +134,7 @@ class _HomeTab extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (_) => const MedicalHistoryScreen()))),
           const SizedBox(width: 12),
-          _QuickAction(
-              icon: Icons.chat,
-              label: 'AI Chat',
-              color: Colors.green,
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => const ContactDoctorScreen()))),
           const SizedBox(width: 12),
-          _QuickAction(
-              icon: Icons.folder,
-              label: 'My Cases',
-              color: Colors.orange,
-              onTap: () {}),
         ]),
         const SizedBox(height: 24),
         // Recent cases
@@ -290,13 +270,3 @@ class _CaseCard extends StatelessWidget {
 }
 
 // ── Chat stub tab ─────────────────────────────────────────────────────────────
-class _ChatTab extends StatelessWidget {
-  const _ChatTab();
-  @override
-  Widget build(BuildContext context) => Center(
-      child: ElevatedButton.icon(
-          icon: const Icon(Icons.chat),
-          label: const Text('Open AI Assistant'),
-          onPressed: () => Navigator.push(context,
-              MaterialPageRoute(builder: (_) => const ContactDoctorScreen()))));
-}

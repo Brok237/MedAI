@@ -7,12 +7,14 @@ class AuthService {
   static Future<Map<String, dynamic>> changePassword({
     required String oldPassword,
     required String newPassword,
+    required String confirmPassword,
   }) async {
     return ApiClient.post(
       '/auth/change-password/',
       {
         'old_password': oldPassword,
         'new_password': newPassword,
+        'confirm_password': confirmPassword,
       },
     );
   }
