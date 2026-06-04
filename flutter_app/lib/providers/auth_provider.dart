@@ -80,8 +80,17 @@ class AuthProvider extends ChangeNotifier {
     required String password,
     int? age,
     String? gender,
+    double? weightKg,
+    double? heightCm,
+    String? bloodType,
+    String? phone,
+    String? address,
+    String? chronicDiseases,
+    String? allergies,
+    String? currentMeds,
   }) async {
     _error = null;
+
     try {
       final response = await AuthService.registerPatient(
         name: name,
@@ -89,18 +98,29 @@ class AuthProvider extends ChangeNotifier {
         password: password,
         age: age,
         gender: gender,
+        weightKg: weightKg,
+        heightCm: heightCm,
+        bloodType: bloodType,
+        phone: phone,
+        address: address,
+        chronicDiseases: chronicDiseases,
+        allergies: allergies,
+        currentMeds: currentMeds,
       );
-      // Registration auto-logs in patients
+
       if (response['tokens'] != null) {
         _user = UserModel.fromJson(response['user']);
         _status = AuthStatus.authenticated;
+
         final tokens = response['tokens'];
+
         await SessionStorage.saveSession(
           accessToken: tokens['access'],
           refreshToken: tokens['refresh'],
           user: _user!,
         );
       }
+
       notifyListeners();
       return true;
     } catch (e) {
@@ -109,7 +129,6 @@ class AuthProvider extends ChangeNotifier {
       return false;
     }
   }
-
   // ── Doctor registration ───────────────────────────────────────────────────
 
   Future<bool> registerDoctor({
@@ -176,5 +195,44 @@ class AuthProvider extends ChangeNotifier {
   void clearError() {
     _error = null;
     notifyListeners();
+  }
+
+  Future<bool> updatePatientProfile({
+    int? age,
+    String? gender,
+    double? weightKg,
+    double? heightCm,
+    String? bloodType,
+    String? phone,
+    String? address,
+    String? chronicDiseases,
+    String? allergies,
+    String? currentMeds,
+  }) async {
+    _error = null;
+
+    try {
+      _user = await AuthService.updatePatientProfile(
+        age: age,
+        gender: gender,
+        weightKg: weightKg,
+        heightCm: heightCm,
+        bloodType: bloodType,
+        phone: phone,
+        address: address,
+        chronicDiseases: chronicDiseases,
+        allergies: allergies,
+        currentMeds: currentMeds,
+      );
+
+      await SessionStorage.saveUser(_user!);
+
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = _parseError(e);
+      notifyListeners();
+      return false;
+    }
   }
 }

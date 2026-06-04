@@ -211,19 +211,44 @@ class ChangePasswordView(APIView):
             return Response({'message': 'Password changed successfully.'})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class MeView(APIView):
-    """Return the currently authenticated user's full profile."""
+    """Return/update the currently authenticated user's full profile."""
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
         return Response(UserSerializer(request.user).data)
 
     def patch(self, request):
-        """Update name and avatar."""
         user = request.user
-        allowed = {k: v for k, v in request.data.items() if k in ['name', 'avatar']}
-        for field, value in allowed.items():
-            setattr(user, field, value)
+
+        # Update basic user fields
+        user_allowed = ['name', 'avatar']
+        for field in user_allowed:
+            if field in request.data:
+                setattr(user, field, request.data.get(field))
         user.save()
+
+        # Update patient profile fields
+        if user.role == User.Role.PATIENT:
+            profile, _ = PatientProfile.objects.get_or_create(user=user)
+
+            profile_allowed = [
+                'age',
+                'gender',
+                'weight_kg',
+                'height_cm',
+                'blood_type',
+                'phone',
+                'address',
+                'chronic_diseases',
+                'allergies',
+                'current_meds',
+            ]
+
+            for field in profile_allowed:
+                if field in request.data:
+                    setattr(profile, field, request.data.get(field))
+
+            profile.save()
+
         return Response(UserSerializer(user).data)
