@@ -69,17 +69,43 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 # ── Registration ──────────────────────────────────────────────────────────────
-
 class PatientRegisterSerializer(serializers.Serializer):
     """Register a new patient account."""
-    name             = serializers.CharField(max_length=150)
-    email            = serializers.EmailField()
-    password         = serializers.CharField(write_only=True, validators=[validate_password])
+    name = serializers.CharField(max_length=150)
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True, validators=[validate_password])
     confirm_password = serializers.CharField(write_only=True)
 
-    # Optional profile fields
-    age    = serializers.IntegerField(required=False, allow_null=True)
-    gender = serializers.ChoiceField(choices=['male', 'female', 'other'], required=False, allow_null=True)
+    # Existing PatientProfile fields
+    age = serializers.IntegerField(required=False, allow_null=True)
+    gender = serializers.ChoiceField(
+        choices=['male', 'female', 'other'],
+        required=False,
+        allow_null=True
+    )
+    weight_kg = serializers.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        required=False,
+        allow_null=True
+    )
+    height_cm = serializers.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        required=False,
+        allow_null=True
+    )
+    blood_type = serializers.ChoiceField(
+        choices=['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'],
+        required=False,
+        allow_null=True
+    )
+    phone = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    address = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+
+    chronic_diseases = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    allergies = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    current_meds = serializers.CharField(required=False, allow_blank=True, allow_null=True)
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
@@ -92,8 +118,18 @@ class PatientRegisterSerializer(serializers.Serializer):
         return data
 
     def create(self, validated_data):
-        age    = validated_data.pop('age', None)
-        gender = validated_data.pop('gender', None)
+        profile_data = {
+            'age': validated_data.pop('age', None),
+            'gender': validated_data.pop('gender', None),
+            'weight_kg': validated_data.pop('weight_kg', None),
+            'height_cm': validated_data.pop('height_cm', None),
+            'blood_type': validated_data.pop('blood_type', None),
+            'phone': validated_data.pop('phone', None),
+            'address': validated_data.pop('address', None),
+            'chronic_diseases': validated_data.pop('chronic_diseases', None),
+            'allergies': validated_data.pop('allergies', None),
+            'current_meds': validated_data.pop('current_meds', None),
+        }
 
         user = User.objects.create_user(
             email=validated_data['email'],
@@ -102,13 +138,13 @@ class PatientRegisterSerializer(serializers.Serializer):
             role=User.Role.PATIENT,
         )
 
-        PatientProfile.objects.get_or_create(
-        user=user,
-        defaults={
-            "age": age,
-            "gender": gender
-        }
-    )
+        profile, created = PatientProfile.objects.get_or_create(user=user)
+
+        for field, value in profile_data.items():
+            if value is not None:
+                setattr(profile, field, value)
+
+        profile.save()
         return user
 
 

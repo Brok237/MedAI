@@ -7,6 +7,7 @@ import '../models/case_model.dart';
 import '../app_theme.dart';
 import 'add_symptoms_screen.dart';
 import 'ai_diagnosis_results_screen.dart';
+import 'edit_medical_profile_screen.dart';
 
 import 'medical_history_screen.dart';
 import 'patient_settings_screen.dart';
@@ -122,19 +123,50 @@ class _HomeTab extends StatelessWidget {
             ])),
         const SizedBox(height: 24),
         // Quick actions
+        Row(
+          children: [
+            Icon(
+              Icons.dashboard_customize_outlined,
+              color: AppTheme.primary,
+              size: 22,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'Quick Access',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.primary,
+                  ),
+            ),
+          ],
+        ),
 
         const SizedBox(height: 12),
+
         Row(children: [
           _QuickAction(
-              icon: Icons.history,
-              label: 'History',
-              color: Colors.blue,
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => const MedicalHistoryScreen()))),
+            icon: Icons.history,
+            label: 'History',
+            color: Colors.blue,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const MedicalHistoryScreen(),
+              ),
+            ),
+          ),
           const SizedBox(width: 12),
-          const SizedBox(width: 12),
+          _QuickAction(
+            icon: Icons.favorite_outline,
+            label: 'Edit  Profile',
+            color: Colors.red,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const EditMedicalProfileScreen(),
+              ),
+            ),
+          ),
         ]),
         const SizedBox(height: 24),
         // Recent cases

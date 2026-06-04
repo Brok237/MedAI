@@ -6,6 +6,7 @@ import '../app_theme.dart';
 import '../providers/auth_provider.dart';
 import '../services/auth_service.dart';
 import '../widgets/common_widgets.dart';
+import 'edit_medical_profile_screen.dart';
 
 class PatientSettingsScreen extends StatefulWidget {
   const PatientSettingsScreen({super.key});
@@ -186,6 +187,30 @@ class _PatientSettingsScreenState extends State<PatientSettingsScreen> {
                           subtitle: 'Update your account password',
                           onTap: _showChangePassword),
                     ]),
+                const SizedBox(height: 16),
+
+// Medical Profile
+                _sectionCard(
+                  title: 'Medical Profile',
+                  icon: Icons.favorite_outline,
+                  iconColor: Colors.red,
+                  children: [
+                    SettingsRow(
+                      title: 'Patient info',
+                      subtitle:
+                          'Data, Medical history, allergies and medications',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const EditMedicalProfileScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+
                 const SizedBox(height: 16),
 
                 // Preferences

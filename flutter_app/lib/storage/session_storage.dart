@@ -6,9 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 
 class SessionStorage {
-  static const _accessTokenKey  = 'access_token';
+  static const _accessTokenKey = 'access_token';
   static const _refreshTokenKey = 'refresh_token';
-  static const _userKey         = 'user_data';
+  static const _userKey = 'user_data';
+
+  // ── Save session after login ─────────────────────────────────────────────
 
   // ── Save session after login ─────────────────────────────────────────────
 
@@ -18,11 +20,17 @@ class SessionStorage {
     required UserModel user,
   }) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_accessTokenKey,  accessToken);
+    await prefs.setString(_accessTokenKey, accessToken);
     await prefs.setString(_refreshTokenKey, refreshToken);
     await prefs.setString(_userKey, jsonEncode(user.toJson()));
   }
 
+// ── Save/update cached user only ─────────────────────────────────────────
+
+  static Future<void> saveUser(UserModel user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_userKey, jsonEncode(user.toJson()));
+  }
   // ── Get access token ─────────────────────────────────────────────────────
 
   static Future<String?> getAccessToken() async {
@@ -41,7 +49,7 @@ class SessionStorage {
 
   static Future<UserModel?> getUser() async {
     final prefs = await SharedPreferences.getInstance();
-    final data  = prefs.getString(_userKey);
+    final data = prefs.getString(_userKey);
     if (data == null) return null;
     return UserModel.fromJson(jsonDecode(data));
   }

@@ -25,18 +25,35 @@ class AuthService {
     required String password,
     int? age,
     String? gender,
+    double? weightKg,
+    double? heightCm,
+    String? bloodType,
+    String? phone,
+    String? address,
+    String? chronicDiseases,
+    String? allergies,
+    String? currentMeds,
   }) async {
     return ApiClient.post(
-        '/auth/register/patient/',
-        {
-          'name': name,
-          'email': email,
-          'password': password,
-          'confirm_password': password,
-          if (age != null) 'age': age,
-          if (gender != null) 'gender': gender,
-        },
-        auth: false);
+      '/auth/register/patient/',
+      {
+        'name': name,
+        'email': email,
+        'password': password,
+        'confirm_password': password,
+        if (age != null) 'age': age,
+        if (gender != null) 'gender': gender,
+        if (weightKg != null) 'weight_kg': weightKg,
+        if (heightCm != null) 'height_cm': heightCm,
+        if (bloodType != null) 'blood_type': bloodType,
+        if (phone != null) 'phone': phone,
+        if (address != null) 'address': address,
+        if (chronicDiseases != null) 'chronic_diseases': chronicDiseases,
+        if (allergies != null) 'allergies': allergies,
+        if (currentMeds != null) 'current_meds': currentMeds,
+      },
+      auth: false,
+    );
   }
 
   static Future<Map<String, dynamic>> registerDoctor({
@@ -106,5 +123,36 @@ class AuthService {
         refreshToken: tokens['refresh'],
         user: user);
     return user;
+  }
+
+  static Future<UserModel> updatePatientProfile({
+    int? age,
+    String? gender,
+    double? weightKg,
+    double? heightCm,
+    String? bloodType,
+    String? phone,
+    String? address,
+    String? chronicDiseases,
+    String? allergies,
+    String? currentMeds,
+  }) async {
+    final response = await ApiClient.patch(
+      '/auth/me/',
+      {
+        if (age != null) 'age': age,
+        if (gender != null) 'gender': gender,
+        if (weightKg != null) 'weight_kg': weightKg,
+        if (heightCm != null) 'height_cm': heightCm,
+        if (bloodType != null) 'blood_type': bloodType,
+        if (phone != null) 'phone': phone,
+        if (address != null) 'address': address,
+        if (chronicDiseases != null) 'chronic_diseases': chronicDiseases,
+        if (allergies != null) 'allergies': allergies,
+        if (currentMeds != null) 'current_meds': currentMeds,
+      },
+    );
+
+    return UserModel.fromJson(response);
   }
 }
