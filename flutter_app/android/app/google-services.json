@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "889735295377",
+    "project_id": "medai-7f482",
+    "storage_bucket": "medai-7f482.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889735295377:android:08406a8528c089c8b32a30",
+        "android_client_info": {
+          "package_name": "com.example.medai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889735295377-j4std54b1ekkoeoj11639pnesk1tmnvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medai",
+            "certificate_hash": "8de005449a6fbba1c9beb9e14bac6f41233c2019"
+          }
+        },
+        {
+          "client_id": "889735295377-602jv72v01v0aq7fdmtf2furngdsvc2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC28lK-HSlMgp8PIdqf_xO8ifsLITpUiHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889735295377-602jv72v01v0aq7fdmtf2furngdsvc2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

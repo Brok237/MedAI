@@ -176,8 +176,9 @@ class GoogleAuthView(APIView):
                     is_active=True,
                 )
                 if role == User.Role.PATIENT:
-                    PatientProfile.objects.create(user=user)
-
+                    PatientProfile.objects.get_or_create(user=user)
+        if user.role == User.Role.PATIENT:
+          PatientProfile.objects.get_or_create(user=user)
         if not user.is_active:
             return Response({'error': 'Account is not active.'}, status=status.HTTP_403_FORBIDDEN)
 

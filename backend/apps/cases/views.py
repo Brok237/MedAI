@@ -108,12 +108,13 @@ class SubmitCaseView(APIView):
                     allergy_warning=row.get('Allergy_Warning') or row.get('Allergy Warning', ''),
                     drug_interaction_warning=row.get('Drug_Interaction_Warning') or row.get('Drug Interaction Warning', ''),
                 )
-
+            # 3dlha mtnsa4
             # Notify doctors
-            try:
-                notify_doctors_new_case.delay(str(case.id))
-            except Exception:
-                pass
+            #try:
+              #  notify_doctors_new_case.delay(str(case.id))
+           # except Exception:
+              #  pass
+            notify_doctors_new_case(str(case.id))
 
             return Response({
                 'message': 'Case submitted. Awaiting doctor review.',
@@ -314,10 +315,11 @@ class DoctorCaseDecisionView(APIView):
             except Exception:
                 pass
 
-            try:
-                notify_patient_case_approved.delay(str(case.id))
-            except Exception:
-                pass
+            #try:
+             #   notify_patient_case_approved.delay(str(case.id))
+            #except Exception:
+             #   pass
+            notify_doctors_new_case(str(case.id))
 
             return Response({
                 'message': 'Case approved and prescription issued.',
@@ -330,10 +332,11 @@ class DoctorCaseDecisionView(APIView):
             case.rejection_reason = data.get('rejection_reason', '')
             case.save()
 
-            try:
-                notify_patient_case_rejected.delay(str(case.id))
-            except Exception:
-                pass
+            #try:
+               # notify_patient_case_rejected.delay(str(case.id))
+            #except Exception:
+                #pass
+            notify_doctors_new_case(str(case.id))
 
             return Response({
                 'message': 'Case rejected.',

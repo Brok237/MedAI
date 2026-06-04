@@ -10,20 +10,20 @@ enum AuthStatus { unknown, authenticated, unauthenticated }
 
 class AuthProvider extends ChangeNotifier {
   AuthStatus _status = AuthStatus.unknown;
-  UserModel?  _user;
-  String?     _error;
+  UserModel? _user;
+  String? _error;
 
   AuthStatus get status => _status;
-  UserModel? get user   => _user;
-  String?    get error  => _error;
-  bool get isLoggedIn   => _status == AuthStatus.authenticated;
+  UserModel? get user => _user;
+  String? get error => _error;
+  bool get isLoggedIn => _status == AuthStatus.authenticated;
 
   // ── Boot: restore session from storage ───────────────────────────────────
 
   Future<void> init() async {
     final loggedIn = await SessionStorage.isLoggedIn();
     if (loggedIn) {
-      _user   = await SessionStorage.getUser();
+      _user = await SessionStorage.getUser();
       _status = AuthStatus.authenticated;
     } else {
       _status = AuthStatus.unauthenticated;
@@ -36,12 +36,36 @@ class AuthProvider extends ChangeNotifier {
   Future<bool> login(String email, String password) async {
     _error = null;
     try {
-      _user   = await AuthService.login(email: email, password: password);
+      _user = await AuthService.login(email: email, password: password);
       _status = AuthStatus.authenticated;
       notifyListeners();
       return true;
     } catch (e) {
-      _error  = _parseError(e);
+      _error = _parseError(e);
+      _status = AuthStatus.unauthenticated;
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> googleLogin(String idToken) async {
+    _error = null;
+
+    try {
+      _user = await AuthService.googleSignIn(idToken, role: 'patient');
+
+      if (_user == null) {
+        _error = 'Google login failed';
+        _status = AuthStatus.unauthenticated;
+        notifyListeners();
+        return false;
+      }
+
+      _status = AuthStatus.authenticated;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = _parseError(e);
       _status = AuthStatus.unauthenticated;
       notifyListeners();
       return false;
@@ -60,11 +84,15 @@ class AuthProvider extends ChangeNotifier {
     _error = null;
     try {
       final response = await AuthService.registerPatient(
-        name: name, email: email, password: password, age: age, gender: gender,
+        name: name,
+        email: email,
+        password: password,
+        age: age,
+        gender: gender,
       );
       // Registration auto-logs in patients
       if (response['tokens'] != null) {
-        _user   = UserModel.fromJson(response['user']);
+        _user = UserModel.fromJson(response['user']);
         _status = AuthStatus.authenticated;
         final tokens = response['tokens'];
         await SessionStorage.saveSession(
@@ -96,9 +124,13 @@ class AuthProvider extends ChangeNotifier {
     _error = null;
     try {
       await AuthService.registerDoctor(
-        name: name, email: email, password: password,
-        specialization: specialization, licenseNumber: licenseNumber,
-        hospital: hospital, yearsExperience: yearsExperience,
+        name: name,
+        email: email,
+        password: password,
+        specialization: specialization,
+        licenseNumber: licenseNumber,
+        hospital: hospital,
+        yearsExperience: yearsExperience,
       );
       notifyListeners();
       return true; // Doctor must wait for admin approval, not auto-login
@@ -113,7 +145,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> logout() async {
     await AuthService.logout();
-    _user   = null;
+    _user = null;
     _status = AuthStatus.unauthenticated;
     notifyListeners();
   }
