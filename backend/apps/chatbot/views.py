@@ -13,11 +13,13 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers as drf_serializers
 from django.shortcuts import get_object_or_404
-
+from .medical_chatbot import MedicalChatbot
 from .models import ChatSession, ChatMessage
 from .engine import ChatbotEngine
+from apps.cases.models import Case
+from apps.cases.serializers import DrugRecommendationSerializer
 
-
+chatbot = MedicalChatbot()
 # ── Serializers ───────────────────────────────────────────────────────────────
 
 class ChatMessageSerializer(drf_serializers.ModelSerializer):
@@ -53,13 +55,7 @@ class SendMessageSerializer(drf_serializers.Serializer):
 
 
 # ── Views ─────────────────────────────────────────────────────────────────────
-
-class ChatView(APIView):
-    """
-    Send a message to the AI assistant.
-    Creates a session if session_id not provided.
-    Optionally links to a case for contextual responses.
-    """
+class GeneralChatbotView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
@@ -67,73 +63,123 @@ class ChatView(APIView):
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        data       = serializer.validated_data
-        user_msg   = data['message']
-        session_id = data.get('session_id')
-        case_id    = data.get('case_id')
-        language   = data.get('language', 'en')
+        message = serializer.validated_data['message']
+        session_id = serializer.validated_data.get('session_id')
+        case_id = serializer.validated_data.get('case_id')
+        language = serializer.validated_data.get('language', 'en')
 
-        # Get or create session
+        # Get old session or create new one
         if session_id:
-            session = get_object_or_404(ChatSession, id=session_id, user=request.user)
+            session = get_object_or_404(
+                ChatSession,
+                id=session_id,
+                user=request.user
+            )
         else:
             session = ChatSession.objects.create(
                 user=request.user,
+                case_id=case_id,
                 language=language,
             )
-            if case_id:
-                try:
-                    from apps.cases.models import Case
-                    case = Case.objects.get(id=case_id, patient=request.user)
-                    session.case = case
-                    session.save(update_fields=['case'])
-                except Exception:
-                    pass
-
-        # Build context from linked case
-        context = {}
-        if session.case:
-            case = session.case
-            context['predicted_disease'] = case.predicted_disease or ''
-            context['case_status'] = case.status
-            context['drug_recommendations'] = [
-                {
-                    'drug_name':      d.drug_name,
-                    'egyptian_brand': d.egyptian_brand,
-                    'role':           d.role,
-                    'dosage':         d.dosage,
-                    'key_side_effects': d.key_side_effects,
-                    'avoid_in':       d.avoid_in,
-                }
-                for d in case.drug_recommendations.all()[:5]
-            ]
 
         # Save user message
         ChatMessage.objects.create(
             session=session,
             role=ChatMessage.Role.USER,
-            content=user_msg,
+            content=message,
         )
 
-        # Generate AI response
-        engine   = ChatbotEngine(language=session.language)
-        ai_reply = engine.get_response(user_msg, context=context)
+        # Build history from DB
+        db_messages = session.messages.order_by('created_at')
+        history = []
+        for msg in db_messages:
+            if msg.role == ChatMessage.Role.USER:
+                history.append({
+                    "role": "user",
+                    "content": msg.content,
+                })
+            elif msg.role == ChatMessage.Role.ASSISTANT:
+                history.append({
+                    "role": "assistant",
+                    "content": msg.content,
+                })
 
-        # Save AI response
-        ai_message = ChatMessage.objects.create(
-            session=session,
-            role=ChatMessage.Role.ASSISTANT,
-            content=ai_reply,
+        # Ask new chatbot
+        result = chatbot.chat(
+            message=message,
+            history=history[:-1],
+            language=language,
+        )
+
+        bot_response = result.get('response', '')
+
+        # Save bot message
+        ChatMessage.objects.create(
+        session=session,
+        role=ChatMessage.Role.ASSISTANT,
+        content=bot_response,
+    )
+
+        session.language = language
+        session.save()
+
+        return Response({
+            "session_id": session.id,
+            "response": bot_response,
+            "extracted_symptoms": result.get("extracted_symptoms", []),
+            "is_emergency": result.get("is_emergency", False),
+            "intent": result.get("intent", "general"),
+        })
+class CaseChatbotView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+
+        serializer = SendMessageSerializer(data=request.data)
+
+        if not serializer.is_valid():
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        message = serializer.validated_data['message']
+        case_id = serializer.validated_data.get('case_id')
+        language = serializer.validated_data.get('language', 'en')
+
+        if not case_id:
+            return Response(
+                {"error": "case_id is required"},
+                status=400
+            )
+
+        case = get_object_or_404(
+            Case,
+            id=case_id,
+            patient=request.user
+        )
+
+        engine = ChatbotEngine(language)
+
+        context = {
+            "predicted_disease": case.predicted_disease,
+            "case_status": case.status,
+            "drug_recommendations":
+                DrugRecommendationSerializer(
+                    case.drug_recommendations.all(),
+                    many=True
+                ).data
+        }
+
+        response_text = engine.get_response(
+            message,
+            context
         )
 
         return Response({
-            'session_id': str(session.id),
-            'response': ai_reply,
-            'message_id': str(ai_message.id),
-            'created_at': ai_message.created_at.isoformat(),
+            "response": response_text,
+            "case_id": str(case.id)
         })
-
-
 class ChatSessionListView(APIView):
     """List the current user's chat sessions."""
     permission_classes = [IsAuthenticated]

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../services/chat_service.dart';
 import '../app_theme.dart';
 
-class ContactDoctorScreen extends StatefulWidget {
+class GeneralChatScreen extends StatefulWidget {
   final String? caseId;
-  const ContactDoctorScreen({super.key, this.caseId});
+  const GeneralChatScreen({super.key, this.caseId});
   @override
-  State<ContactDoctorScreen> createState() => _State();
+  State<GeneralChatScreen> createState() => _State();
 }
 
-class _State extends State<ContactDoctorScreen> {
+class _State extends State<GeneralChatScreen> {
   final _ctrl = TextEditingController();
   final _scroll = ScrollController();
   String? _sessionId;
@@ -35,11 +35,11 @@ class _State extends State<ContactDoctorScreen> {
     });
     _scrollDown();
     try {
-      final resp = await ChatService.sendCaseMessage(
-          message: msg,
-          sessionId: _sessionId,
-          caseId: widget.caseId,
-          language: _language);
+      final resp = await ChatService.sendGeneralMessage(
+        message: msg,
+        sessionId: _sessionId,
+        language: _language,
+      );
       _sessionId = resp['session_id'];
       setState(() {
         _messages.add({'role': 'assistant', 'content': resp['response'] ?? ''});
