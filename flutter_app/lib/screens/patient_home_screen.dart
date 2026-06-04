@@ -8,6 +8,7 @@ import '../app_theme.dart';
 import 'add_symptoms_screen.dart';
 import 'ai_diagnosis_results_screen.dart';
 import 'edit_medical_profile_screen.dart';
+import 'general_chat_screen.dart';
 
 import 'medical_history_screen.dart';
 import 'patient_settings_screen.dart';
@@ -57,6 +58,7 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
       body: IndexedStack(index: _tab, children: const [
         _HomeTab(),
         _CasesTab(),
+        GeneralChatScreen(),
         PatientSettingsScreen(),
       ]),
       bottomNavigationBar: BottomNavigationBar(
@@ -70,6 +72,8 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
               icon: Icon(Icons.home_outlined), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.folder_outlined), label: 'My Cases'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.smart_toy_outlined), label: 'Medical AI'),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],

@@ -1,35 +1,64 @@
 // lib/services/chat_service.dart
-// Connects to Django /api/v1/chat/ endpoints
 
 import 'api_client.dart';
 
 class ChatService {
-  // ── Send a message ────────────────────────────────────────────────────────
+  // ==========================
+  // CASE CHATBOT
+  // ==========================
 
-  static Future<Map<String, dynamic>> sendMessage({
+  static Future<Map<String, dynamic>> sendCaseMessage({
     required String message,
     String? sessionId,
     String? caseId,
     String language = 'en',
   }) async {
-    return ApiClient.post('/chat/', {
-      'message': message,
-      if (sessionId != null) 'session_id': sessionId,
-      if (caseId != null) 'case_id': caseId,
-      'language': language,
-    });
+    return ApiClient.post(
+      '/chat/case/',
+      {
+        'message': message,
+        if (sessionId != null) 'session_id': sessionId,
+        if (caseId != null) 'case_id': caseId,
+        'language': language,
+      },
+    );
   }
 
-  // ── List sessions ─────────────────────────────────────────────────────────
+  // ==========================
+  // GENERAL MEDICAL CHATBOT
+  // ==========================
+
+  static Future<Map<String, dynamic>> sendGeneralMessage({
+    required String message,
+    String? sessionId,
+    String language = 'en',
+  }) async {
+    return ApiClient.post(
+      '/chat/general/',
+      {
+        'message': message,
+        if (sessionId != null) 'session_id': sessionId,
+        'language': language,
+      },
+    );
+  }
+
+  // ==========================
+  // SESSIONS
+  // ==========================
 
   static Future<List<Map<String, dynamic>>> getSessions() async {
     final response = await ApiClient.get('/chat/sessions/');
-    return List<Map<String, dynamic>>.from(response['results'] ?? []);
+    return List<Map<String, dynamic>>.from(
+      response['results'] ?? [],
+    );
   }
 
-  // ── Get session history ───────────────────────────────────────────────────
-
-  static Future<Map<String, dynamic>> getSessionHistory(String sessionId) async {
-    return ApiClient.get('/chat/sessions/$sessionId/');
+  static Future<Map<String, dynamic>> getSessionHistory(
+    String sessionId,
+  ) async {
+    return ApiClient.get(
+      '/chat/sessions/$sessionId/',
+    );
   }
 }
